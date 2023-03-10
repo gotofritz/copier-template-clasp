@@ -5,7 +5,7 @@ project_name:
 
 app_name:
   type: str
-  help: Title of your app?
+  help: Title of your app? (It will also be the name of your Google document)
 
 project_type:
   type: str
