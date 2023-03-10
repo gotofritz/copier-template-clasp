@@ -1,0 +1,53 @@
+{
+  "name": "{{app_name}}",
+  "version": "0.1.0",
+  "description": "The source for a GoogleAppsScript project",
+  "author": "{{github_user}}",
+  "license": "{{licence}}",
+  "devDependencies": {
+    "@types/google-apps-script": "^1.0.57",
+    "copyfiles": "^2.4.1",
+    "prettier": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.0",
+    "xo": "^0.39.1"
+  },
+  "repository": "https://github.com/{{github_user}}/{{project_name}}.git",
+  "scripts": {
+    "build-clean": "rimraf build && pnpm run config && pnpm run build",
+    "build-push": "pnpm run build && pnpm run push",
+    "build": "tsc --build src",
+    "config": "copyfiles appsscript.json build/",
+    "format": "prettier --write **.{ts,json}",
+    "lint": "xo --quiet",
+    "push": "clasp push"
+  },
+  "xo": {
+    "ignores": [
+      "build",
+      "**.js"
+    ],
+    "space": 2,
+    "rules": {
+      "capitalized-comments": "error",
+      "no-inner-declarations": "error",
+      "no-undef": "off",
+      "single-quote": "off",
+      "@typescript-eslint/no-unsafe-argument": "error",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/restrict-template-expressions": [
+        "error",
+        {
+          "allowNumber": true,
+          "allowBoolean": false,
+          "allowAny": false,
+          "allowNullish": false
+        }
+      ],
+      "@typescript-eslint/triple-slash-reference": "off",
+      "unicorn/filename-case": "off"
+    },
+    "prettier": true
+  }
+}

@@ -1,0 +1,20 @@
+/** BEGIN App.ts */
+
+class App {
+  id: string;
+
+  constructor() {
+    this.id = "{{app_name}}";
+  }
+}
+
+let app_: App;
+
+const getApp = () => {
+  if (!app_) {
+    app_ = new App();
+  }
+  return app_;
+};
+
+/** END */

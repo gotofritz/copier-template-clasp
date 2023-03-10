@@ -1,0 +1,34 @@
+/** BEGIN index.ts */
+
+/**
+ * Here the triple slash directives allow to specify order
+ * in which files get added to the output
+ */
+
+/// <reference path="globals.ts" />
+/// <reference path="App.ts" />
+
+type NoOp = (...args: any[]) => void;
+const noop: NoOp = () => {};
+
+function onOpen() {
+  SpreadsheetApp.getActiveSpreadsheet().setSpreadsheetTimeZone({{timezone}});
+
+  SpreadsheetApp.getUi()
+    .createMenu("{{app_name}}")
+    .addItem("START APP", "noop")
+    .addSeparator()
+    .addSubMenu(
+      SpreadsheetApp.getUi()
+        .createMenu("ENTRY 1")
+        .addItem("Do this", "noop")
+        .addItem("Now do that", "nowDoThat"),
+    )
+    .addToUi();
+}
+
+function nowDoThat() {
+  Browser.msgBox(getApp().id);
+}
+
+/** END index.ts */

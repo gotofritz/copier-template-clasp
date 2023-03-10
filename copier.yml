@@ -1,0 +1,87 @@
+# questions
+project_name:
+  type: str
+  help: Name of your repo (no spaces)?
+
+app_name:
+  type: str
+  help: Title of your app?
+
+project_type:
+  type: str
+  default: sheets
+  help: Type of project?
+  choices:
+    api: null
+    docs: null
+    forms: null
+    sheets: null
+    slides: null
+    standalone: null
+    webapp: null
+
+timezone:
+  type: str
+  default: "Europe/Berlin"
+  help: "Your timezone? (list here: http://www.timezoneconverter.com/cgi-bin/zonehelp.tzc)"
+
+github_user:
+  type: str
+  help: Github username?
+
+package_manager:
+  type: str
+  help: What package manager do you want to use? (it must be already installed)
+  default: pnpm
+  choices:
+    npm: null
+    pnpm: null
+    yarn: null
+
+licence:
+  type: str
+  help: Licence?
+  default: "mit"
+  choices:
+    afl-3.0: null
+    agpl-3.0: null
+    apache-2.0: null
+    artistic-2.0: null
+    bsd-2-clause: null
+    bsd-3-clause: null
+    bsd-3-clause-clear: null
+    bsl-1.0: null
+    cc: null
+    cc-by-4.0: null
+    cc-by-sa-4.0: null
+    cc0-1.0: null
+    ecl-2.0: null
+    epl-1.0: null
+    epl-2.0: null
+    eupl-1.1: null
+    gpl: null
+    gpl-2.0: null
+    gpl-3.0: null
+    isc: null
+    lgpl: null
+    lgpl-2.1: null
+    lgpl-3.0: null
+    lppl-1.3c: null
+    mit: null
+    mpl-2.0: null
+    ms-pl: null
+    ncsa: null
+    ofl-1.1: null
+    osl-3.0: null
+    postgresql: null
+    unlicense: null
+    wtfpl: null
+    zlib: null
+
+_tasks:
+  - "cd {{project_name}} && {{package_manager}} install"
+  - "cd {{project_name}} && clasp create --type {{project_type}} --title '{{app_name}}'"
+  - "cd {{project_name}} && git init"
+  - "cd {{project_name}} && git add -A"
+  - "cd {{project_name}} && git commit -m 'Initial commit'"
+  - "echo 'DONE!'"
