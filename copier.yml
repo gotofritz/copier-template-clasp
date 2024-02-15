@@ -80,6 +80,7 @@ licence:
 
 _tasks:
   - "cd {{project_name}} && {{package_manager}} install"
+  - "clasp login"
   - "cd {{project_name}} && clasp create --type {{project_type}} --title '{{app_name}}'"
   - "cd {{project_name}} && git init"
   - "cd {{project_name}} && git add -A"

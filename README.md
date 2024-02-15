@@ -41,7 +41,14 @@ And if you want the repo in watch mode, so that it automatically bundles the pro
 Once all the prerequisites are installed you can simply create a project with
 
 ```bash
-❯ copier https://github.com/gotofritz/copier-template-clasp my-project-folder
+# NOTE: `--trust` is needed to run the tasks which do most of the work.
+# Their definition is in ./copier.yml
+# If you don't feel comfortable passing that option, just replicate
+# commands from the _tasks section of that file in the CLI yourself, e.g.
+# cd {{project_name}}
+# (p)npm install
+# ...
+❯ copier copy https://github.com/gotofritz/copier-template-clasp my-project-folder --trust
 ...
 ```
 
